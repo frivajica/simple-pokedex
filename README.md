@@ -1,40 +1,49 @@
-# Spootify Coding Challenge 🎧
+# Pokédex 
 
-### Difficulty: Medium
+# Objetivos 🌄
+- Crear una aplicación web segun los requerimientos pedidos relacionados con los wireframes de la carpeta 'Prueba Pokemon'.
+- Se valolará el diseño y los aportes que trasciendan los requerimientos pedidos y que aporten una mejora a la aplicación.
 
-# Goals/Outcomes ✨
-- To test knowledge of consuming APIs and handling responses
-- Loading state and knowing where and how to make multiple API calls efficiently
+# Requerimientos generales ✅
+- La aplicación se debe crear utilizando React.js
+- Debe utilizar Functional Components y Styled Components.
+- Se debe aplicar Redux.
+- Se debe usar los servicios ofrecidos por https://pokeapi.co/, sin embargo se pueden utilizar otros servicio adicionales.
 
-# Pre-requisites ✅
-- Add your Spotify client ID & secret to `config.js`
-  - Note. **Never add this type of config to version control. This would usually come from your build server.**
+# Requirementos 📖
+### Pantalla De inicio De Sesión
+Construir la vista basandose en el wireframe '1 Inicio de sesión'. Debe de considerar las siguientes funcionalidades:
+- Debe simular un inicio de sesión guardando los datos en localStorage.
+- Ambos campos son requeridos y tendrán la validación adecuada al tipo de información que contendrá.
+- Esta vista será la principal cuando no se haya simulado el inicio de Sesión, una vez que esto ocurra esta vista estará oculta e inaccesible.
 
-# Requirements 📖
-- Fetch and display *Released This Week* songs
-  - Use the API path `new-releases`
-- Fetch and display *Featured Playlists*
-  - Use the API path `featured-playlists`
-- Fetch and display *Browse* genres
-  - Use the API path `categories`
-- Loading state/UI *(optional, current UX is already clean)*
-- Add dark-mode switching functionality to the *existing* dark-mode button
-  - Utilise the *existing* dark-mode scss file by adding a `dark-mode` class to the root `html` element
-- When in Dark mode:
-  - The button icon should be `faSun`
-  - The button icon colour should be `(#FFA500)`. You can use the `color` prop on the `Icon` component.
+### Pantalla Principal
+Construir la vista basandose en los wireframes '2a Principal Modo Lista' y '2b Principal Modo Cuadrícula'. Debe de considerar las siguientes funcionalidades generales:
+- El campo de texto que contiene el Placeholder "Buscar Pokémon" servirá para filtrar el contenido por nombre.
+- El grupo de botones "Lista", y "Cuadrícula" cambiará la forma en que se mostrará el contenido. Por defecto el modo lista estará seleccionado.
 
-# Think about 💡
-- Taking a look at the Spotify API documentation
-- Do you resolve each API request one after the other or in parallel?
-- Where do you make the API requests?
-- How much logic do you offload out of the UI components?
+Para el modo lista se debe basar el diseño en el wireframe '2a Principal Modo Lista' y considerar las siguiente funcionalidades.
+- Se mostrará los datos en modo de lista con las columnas correspondientes a los datos "Número", "Nombre", "Imagén", "Tipos" y "Habilidades".
+- Cada elemento de la lista tendrá un botón con la leyenda "Shiny", que al hacer click sobre él se mostrará una ventana emergenta que contiene las imagénes del pokémon correspondiente en su forma Variocolor o Shiny.
+- Al hacer click en un elemento de la lista se redirigirá a la Pantalla de detalle con la información del pokémon correspondiente.
+- Debe contener soporte de páginación por botónes.
 
-# What's Already Been Done 🏁
-- UI/UX for all elements, including previews (mobile responsive)
-- A Spotify request helper (`makeRequest.js`)
+Para el modo cuadrícula se debe basar el diseño en el wireframe '2b Principal Modo Cuadrícula' y considerar las siguiente funcionalidades.
+- Se mostrará los datos en modo de tarjeta con los datos, "Nombre", "Imagén", "Tipos" y "Habilidades" y un botón con la leyenda "Shiny", que al hacer click sobre él se mostrará una ventana emergenta que contiene las imagénes del pokémon correspondiente en su forma Variocolor o Shiny.
+- Al hacer click en la tarjeta se redirigirá a la Pantalla de detalle con la información del pokémon correspondiente.
+- Debe contener soporte de páginación por Infinite Scroll.
 
-# Screenshots 🌄
+### Pantalla de detalle
+Construir la vista basandose en el wireframe '3 Vista Poke'. Debe de considerar las siguientes funcionalidades:
+- Se mostrará las imagenes correspondientes al pokémon, incluida su forma Variocolor o Shiny, en el formato de galería.
+- En la tarjeta superior izquierda se mostrarán los datos "Nombre", "Tipos" y "Descripción" del pokémon.
+- En la tarjeta inferior izquierda se mostrarán la lista de habilidades del pokémon con nombre y descripción.
+- En la tarjeta derecha se mostrarán una lista de 10 movimientos que el pokemon puede aprender. Cada movimiento debe contener los datos "Nombre", "Poder", "Precisión" y "Tipo"
 
-![screenshot-desktop](https://puu.sh/GwPLE/3be580156a.png)
-![screenshot-mobile](https://puu.sh/GwPLS/0bcb566d23.png)
+
+# Puntos que valoraremos 🏁
+- Compromiso.
+- Creatividad.
+- Buenas prácticas.
+- Experiencia de la herramientas aplicadas.
+- Propuestas de mejora.

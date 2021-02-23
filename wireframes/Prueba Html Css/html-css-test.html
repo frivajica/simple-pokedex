@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test</title>
+    <style>
+        body { 
+            display: block;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+        .shape{
+            display: block;
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            z-index: 1;
+        }
+        .first_square{
+            background-color: #ff0000;
+            top: 0;
+            left: 0;
+        }
+        .second_square{
+            background-color: #00ff00;
+            top: 0;
+            left: 50%;
+        }
+        .third_square{
+            background-color: #0000ff;
+            top: 50%;
+            left: 0;
+        }
+        .fourth_square{
+            background-color: #000000;
+            top: 50%;
+            left: 50%;
+        }
+        .central_circle{
+            background-color: #ffffff;
+            border-radius: 50%;
+            top: 25%;
+            left: 25%;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="shape first_square"></div>
+    <div class="shape second_square"></div>
+    <div class="shape third_square"></div>
+    <div class="shape fourth_square"></div>
+    <div class="shape central_circle"></div>
+</body>
+</html>
