@@ -6,7 +6,7 @@ import styled from "styled-components";
     height: 3rem;
     font-size: .9rem;
     color: white;
-    border: 0 none;
+    border: none;
 	  border-radius: 5px;
     background-color: #47525e;
     :active {
@@ -15,7 +15,6 @@ import styled from "styled-components";
   `
 
 export const Button = ({ children }) => {
-
   return (
     <Container>
       {children}
