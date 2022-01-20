@@ -1,8 +1,9 @@
+import { Login } from "./views/Login"
 
 export const App = () => {
   return (
     <div className="App">
-      <h1>Init</h1>
+      <Login />
     </div>
   );
 }
