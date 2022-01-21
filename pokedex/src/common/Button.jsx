@@ -1,22 +1,26 @@
 import styled from "styled-components";
-const Container = styled.button`
-  justify-self: center;
-  width: fit-content;
-  padding: 0 4vw;
-  height: 2.5rem;
-  font-size: .9rem;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  background-color: #47525e;
-  :active {
-    background-color: #282e35;
-  }
-`;
 
-export const Button = ({ children }) => {
+export const Button = ({ children, isInactive, onClick }) => {
+  const Container = styled.button`
+    justify-self: center;
+    width: fit-content;
+    height: 2.5rem;
+    width : 7rem;
+    max-width: 60%;
+    font-size: .9rem;
+    color: ${isInactive ? "#47525e" : "white"};
+    border: ${isInactive ? "#47525e 3px solid" : "none"};
+    border-radius: 5px;
+    background-color: ${isInactive ? "white" : "#47525e"};
+    :active {
+      border: none;
+      background-color: #282e35;
+      color: white;
+    }
+  `;
+
   return (
-    <Container>
+    <Container onClick={onClick}>
       {children}
     </Container>
   );

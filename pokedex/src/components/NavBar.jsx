@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../common/Button";
 const Container = styled.div`
-	padding: 0 2rem;
+	padding: 2rem 5vw 0 5vw;
 	height: 4rem;
   display: flex;
 	justify-content: space-between;

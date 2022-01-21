@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import { PokeTable } from "../components/PokeTable";
+import { PokelistHeader } from "../components/PokelistHeader";
 const Container = styled.div`
-	height: 100%;
-  display: grid;
-	grid-template-rows: repeat(2, 50vh);
+	margin: 0 5vw;
+	display: grid;
 `;
 
 export const Pokelist = () => {
   return (
     <Container>
-			<h1>Hola</h1>
+			<PokelistHeader />
+			<PokeTable />
     </Container>
   );
 };
