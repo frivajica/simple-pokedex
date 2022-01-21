@@ -6,7 +6,7 @@ import { loginRequest } from "../state/user";
 import { useForm } from "../hooks/useForm"
 const Container = styled.div`
   display: grid;
-	grid-template-rows: repeat(3 , 5rem);
+	grid-template-rows: repeat(3, 5rem);
   justify-content: center;
 `;
 
@@ -31,7 +31,7 @@ export const LoginForm = () => {
 				onChange={handleChange}
 				placeholder="Contraseña"
 			/>
-			<Button onClick={logIn}>Iniciar Sesión</Button>
+			<Button x="7rem" onClick={logIn}>Iniciar Sesión</Button>
     </Container>
   );
 };

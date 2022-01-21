@@ -43,7 +43,7 @@ export const TableItem = ({ isTitle, index }) => {
         <P isTitle={isTitle}>Tipos</P>
         <Habilities isTitle={isTitle} />
       </Item>
-      <Button>Shiny</Button>
+      <Button x="4rem" y="2rem">Shiny</Button>
     </Container>
   );
 };

@@ -1,10 +1,8 @@
 import styled from "styled-components";
 const Container = styled.button`
   justify-self: center;
-  width: fit-content;
-  height: 2.5rem;
-  width : 7rem;
-  max-width: 60%;
+  height: ${({y}) => y || "2.5rem"};
+  width: ${({x}) => x || "fit-content"};
   color: ${({isInactive}) => isInactive ? "#47525e" : "white"};
   border: ${({isInactive}) => isInactive ? "#47525e 3px solid" : "none"};
   border-radius: 5px;
@@ -16,9 +14,9 @@ const Container = styled.button`
   }
 `;
 
-export const Button = ({ children, isInactive, onClick }) => {
+export const Button = ({ children, isInactive, onClick, x, y }) => {
   return (
-    <Container isInactive={isInactive} onClick={onClick}>
+    <Container x={x} y={y} isInactive={isInactive} onClick={onClick}>
       {children}
     </Container>
   );

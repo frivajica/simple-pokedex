@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GridItem } from "../components/GridItem";
+import { Card } from "../components/Card";
 const Container = styled.div`
 	margin:  0 0 2rem 0;
 	display: grid;
@@ -11,18 +11,19 @@ const Container = styled.div`
 export const PokeGrid = () => {
   return (
     <Container>
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
-      <GridItem />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </Container>
   );
 };

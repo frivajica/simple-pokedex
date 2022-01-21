@@ -21,10 +21,10 @@ export const PokelistHeader = () => {
     <Container>
       <Search placeholder={`🔍︎   Buscar Pokémon`} />
       <div>
-        <Button isInactive={isTable} onClick={() => handleView("table")}>
+        <Button x="7rem" isInactive={isTable} onClick={() => handleView("table")}>
           Lista
         </Button>
-        <Button isInactive={!isTable} onClick={() => handleView("grid")}>
+        <Button x="7rem" isInactive={!isTable} onClick={() => handleView("grid")}>
           Cuadrícula
         </Button>
       </div>
