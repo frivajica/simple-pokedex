@@ -1,12 +1,11 @@
 import styled from "styled-components";
+const P = styled.p`font-weight: ${({isTitle}) => isTitle && "bold"};`;
 
 export const Habilities = ({ habilities, isTitle }) => {
-	const P = isTitle ? styled.p`font-weight: bold;` : styled.p``;
-
   return (
 	<>
 		{isTitle ? (
-				<P>Habilidades</P>
+				<P isTitle={isTitle}>Habilidades</P>
 			) : (
 				habilities?.map(hability => <P>{hability}</P>) || <P>Desconocidas</P>
 		)}

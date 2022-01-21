@@ -1,21 +1,33 @@
 import styled from "styled-components";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { Search } from "./Search"
-import { Button } from "../common/Button"
+import { Search } from "./Search";
+import { Button } from "../common/Button";
+import { changeView } from "../state/listMode";
+import { useSelector, useDispatch } from "react-redux";
 const Container = styled.div`
-	padding: 1rem 0;
-	display: flex;
-	justify-content: space-between;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const PokelistHeader = () => {
+  const { listMode } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const isTable = listMode === "grid";
+  const handleView = (view) => {
+    dispatch(changeView(view));
+  };
+
   return (
     <Container>
-			<Search  placeholder={`🔍︎   Buscar Pokémon`}/>
-			<div>
-				<Button>Lista</Button>
-				<Button isInactive>Cuadrícula</Button>
-			</div>
+      <Search placeholder={`🔍︎   Buscar Pokémon`} />
+      <div>
+        <Button isInactive={isTable} onClick={() => handleView("table")}>
+          Lista
+        </Button>
+        <Button isInactive={!isTable} onClick={() => handleView("grid")}>
+          Cuadrícula
+        </Button>
+      </div>
     </Container>
   );
 };

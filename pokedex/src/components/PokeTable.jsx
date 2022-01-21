@@ -11,9 +11,7 @@ export const PokeTable = () => {
     <Container>
 				<TableItem isTitle />
 			{loopThis.map((e, i) => 
-				{return <TableItem 
-					index={i}
-				/>}
+				{return <TableItem index={i} data={e} />}
 			)}
     </Container>
   );

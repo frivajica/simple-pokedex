@@ -4,11 +4,10 @@ import { Pokelist } from "./views/Pokelist";
 import { Login } from "./views/Login";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { useEffect } from "react"
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 const Content = styled.div`
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 8rem);
 `;
 
 export const App = () => {
