@@ -1,4 +1,7 @@
+import { useEffect } from "react"
 import { LoginForm } from "../components/LoginForm";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
   height: 100%;
@@ -10,6 +13,12 @@ const Title = styled.h1`
 `;
 
 export const Login = () => {
+  const isLoggedIn = useSelector(({ user }) => !!user.email);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) navigate(`/`);
+  }, [isLoggedIn]);
+
   return (
     <Container>
       <Title>Pokédex</Title>
