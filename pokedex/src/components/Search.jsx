@@ -2,7 +2,7 @@ import { Input } from "../common/Input"
 
 export const Search = ({ type, onSubmit, placeholder, onChange, id, className, name, value }) => {
   return (
-    <form>
+    <>
 			<Input
         type={type}
         onChange={onChange}
@@ -13,6 +13,6 @@ export const Search = ({ type, onSubmit, placeholder, onChange, id, className, n
         value={value}
         placeholder={placeholder}
       />
-    </form>
+    </>
   );
 };

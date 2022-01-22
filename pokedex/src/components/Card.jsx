@@ -1,8 +1,32 @@
 import { CardProperties } from "./CardProperties";
-import { Link } from "react-router-dom";
 import { CardBottom } from "./CardBottom";
 import styled from "styled-components";
 import { useState } from "react";
+
+export const Card = ({ data, key }) => {
+  const [isShiny, toggleIsShiny] = useState(false);
+  const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
+  const name = data?.names?.filter((e) => e?.language?.name === "es")[0]?.name;
+  const fixedName = capitalizer(name);
+  const type = capitalizer(data?.types[0]?.type?.name);
+  const imgString = !isShiny
+    ? data?.sprites?.front_default
+    : data?.sprites?.front_shiny;
+
+  return (
+    <Container>
+      <Img src={imgString} alt="Imagen del Pokemon" />
+      <h3>{fixedName}</h3>
+      <CardProperties properties={data?.abilities} id={key} />
+      <CardBottom type={type} 
+      id={key} 
+      clickProp={() => toggleIsShiny(!isShiny)} 
+      buttonText={isShiny ? "Normal" : "Shiny"}
+      />
+    </Container>
+  );
+};
+
 const Container = styled.div`
   display: grid;
   padding: 1rem 2rem;
@@ -19,28 +43,3 @@ const Img = styled.img`
     cursor: pointer;
   }
 `;
-
-export const Card = ({ data, key }) => {
-  const [isShiny, toggleIsShiny] = useState(false);
-  const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
-  const name = data?.names?.filter((e) => e?.language?.name === "es")[0]?.name;
-  const fixedName = capitalizer(name);
-  const type = capitalizer(data?.types[0]?.type?.name);
-  const imgString = !isShiny
-    ? data?.sprites?.front_default
-    : data?.sprites?.front_shiny;
-
-  return (
-    <Container>
-        <Img src={imgString} alt="Imagen del Pokemon" />
-      <h3>{fixedName}</h3>
-      <CardProperties properties={data?.abilities} id={key} />
-      <CardBottom
-        type={type}
-        id={key}
-        clickProp={() => toggleIsShiny(!isShiny)}
-        buttonText={isShiny ? "Normal" : "Shiny"}
-      />
-    </Container>
-  );
-};

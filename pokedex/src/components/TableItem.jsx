@@ -2,35 +2,6 @@ import styled from "styled-components";
 import { Button } from "../common/Button";
 import { Habilities } from "../components/Habilities";
 import { useState } from "react";
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 85% 15%;
-  justify-content: center;
-  align-items: center;
-`;
-const Item = styled.div`
-  border: #d2dbe4 2px solid;
-  background-color: ${({ isTitle, i }) => {
-    return isTitle ? "#EFF2F7" : i % 2 === 1 ? "#F9FAFC" : "white";
-  }};
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(auto-fill, 5rem);
-  text-align: center;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-`;
-const Img = styled.img`
-  max-height: 100%;
-  max-width: 100%;
-  :hover {
-    cursor: pointer;
-  }
-`;
-const P = styled.p`
-  font-weight: ${({ isTitle }) => isTitle && "bold"};
-`;
 
 export const TableItem = ({ isTitle, i, key, data }) => {
   const [isShiny, toggleIsShiny] = useState(false);
@@ -63,3 +34,33 @@ export const TableItem = ({ isTitle, i, key, data }) => {
     </Container>
   );
 };
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 85% 15%;
+  justify-content: center;
+  align-items: center;
+`;
+const Item = styled.div`
+  border: #d2dbe4 2px solid;
+  background-color: ${({ isTitle, i }) => {
+    return isTitle ? "#EFF2F7" : i % 2 === 1 ? "#F9FAFC" : "white";
+  }};
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(auto-fill, 5rem);
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+`;
+const Img = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  :hover {
+    cursor: pointer;
+  }
+`;
+const P = styled.p`
+  font-weight: ${({ isTitle }) => isTitle && "bold"};
+`;

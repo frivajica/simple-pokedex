@@ -1,15 +1,10 @@
 import styled from "styled-components";
 import { Search } from "./Search";
-import { useEffect,useState } from "react"
+import { useEffect } from "react"
 import { Button } from "../common/Button";
 import { changeView } from "../state/listMode";
 import { useSelector, useDispatch } from "react-redux";
 import { searchPokemon } from "../state/somePokemon"
-const Container = styled.div`
-  padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-`;
 
 export const PokelistHeader = () => {
   const { listMode } = useSelector((state) => state);
@@ -20,7 +15,7 @@ export const PokelistHeader = () => {
     event.preventDefault();
     dispatch(searchPokemon(event.target.value));
 	};
-  useEffect( () => {dispatch(searchPokemon(""))}, []);
+  useEffect( () => {dispatch(searchPokemon(""))}, [dispatch]);
 
   return (
     <Container>
@@ -40,3 +35,10 @@ export const PokelistHeader = () => {
     </Container>
   );
 };
+
+
+const Container = styled.div`
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+`;

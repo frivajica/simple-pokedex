@@ -1,15 +1,5 @@
 import { Button } from "../common/Button"
 import styled from "styled-components";
-const Div = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`;
-const Container = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 3rem;
-`;
 
 export const CardBottom = ({ type, clickProp, id, buttonText }) => {
   return (
@@ -21,3 +11,14 @@ export const CardBottom = ({ type, clickProp, id, buttonText }) => {
 		</Container>
 	);
 };
+
+const Div = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`;
+const Container = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 3rem;
+`;

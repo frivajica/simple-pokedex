@@ -1,16 +1,4 @@
 import styled from "styled-components";
-const P = styled.p`
-	font-size: .8rem;
-	padding: .3rem 0;
-	font-weight: ${({isTitle}) => isTitle && "bold"};
-	width: 100%;
-`;
-const Container = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-`;
 
 export const Habilities = ({ properties, key, isTitle }) => {
   const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
@@ -30,4 +18,16 @@ export const Habilities = ({ properties, key, isTitle }) => {
 	</Container>
 	);
 };
-				
+
+const P = styled.p`
+	font-size: .8rem;
+	padding: .3rem 0;
+	font-weight: ${({isTitle}) => isTitle && "bold"};
+	width: 100%;
+`;
+const Container = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+`;

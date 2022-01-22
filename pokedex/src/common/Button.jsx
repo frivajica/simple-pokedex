@@ -1,4 +1,13 @@
 import styled from "styled-components";
+
+export const Button = ({ children, isInactive, onClick, x, y }) => {
+  return (
+    <Container x={x} y={y} isInactive={isInactive} onClick={onClick}>
+      {children}
+    </Container>
+  );
+};
+
 const Container = styled.button`
   justify-self: center;
   height: ${({y}) => y || "2.5rem"};
@@ -16,11 +25,3 @@ const Container = styled.button`
     cursor: pointer;
   }
 `;
-
-export const Button = ({ children, isInactive, onClick, x, y }) => {
-  return (
-    <Container x={x} y={y} isInactive={isInactive} onClick={onClick}>
-      {children}
-    </Container>
-  );
-};
