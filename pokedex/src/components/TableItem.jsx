@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../common/Button";
 import { Habilities } from "../components/Habilities";
-const mockImg = "https://media-exp1.licdn.com/dms/image/C4E0BAQECUGocyia18A/company-logo_200_200/0/1519880979070?e=2159024400&v=beta&t=enH3wcEi4IEStEbZUqbxHEgz8QCKiNxvxKQEpllLQd0";
+import { useState } from "react";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 85% 15%;
@@ -10,8 +10,8 @@ const Container = styled.div`
 `;
 const Item = styled.div`
   border: #d2dbe4 2px solid;
-  background-color: ${({ isTitle, index }) => {
-    return isTitle ? "#EFF2F7" : index % 2 === 1 ? "#F9FAFC" : "white";
+  background-color: ${({ isTitle, i }) => {
+    return isTitle ? "#EFF2F7" : i % 2 === 1 ? "#F9FAFC" : "white";
   }};
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -24,26 +24,42 @@ const Item = styled.div`
 const Img = styled.img`
   max-height: 100%;
   max-width: 100%;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const P = styled.p`
   font-weight: ${({ isTitle }) => isTitle && "bold"};
 `;
 
-export const TableItem = ({ isTitle, index }) => {
+export const TableItem = ({ isTitle, i, key, data }) => {
+  const [isShiny, toggleIsShiny] = useState(false);
+  const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
+  const name = data?.names?.filter((e) => e?.language?.name === "es")[0]?.name;
+  const fixedName = capitalizer(name);
+  const type = capitalizer(data?.types[0]?.type?.name);
+  const imgString = !isShiny
+    ? data?.sprites?.front_default
+    : data?.sprites?.front_shiny;
+
   return (
     <Container>
-      <Item>
-        <P isTitle={isTitle}>#</P>
-        <P isTitle={isTitle}>Nombre</P>
+      <Item i={i} isTitle={isTitle}>
+        <P isTitle={isTitle}>{isTitle ? "#" : data.id}</P>
+        <P isTitle={isTitle}>{isTitle ? "Nombre" : fixedName}</P>
         {isTitle ? (
           <P isTitle={isTitle}>Vista Previa</P>
         ) : (
-          <Img src={mockImg} alt="Imagen del Pokemon" />
+          <Img src={imgString} alt="Imagen del Pokemon" />
         )}
-        <P isTitle={isTitle}>Tipos</P>
-        <Habilities isTitle={isTitle} />
+        <P isTitle={isTitle}>{isTitle ? "Tipos" : type}</P>
+        <Habilities isTitle={isTitle} id={key} properties={data?.abilities} />
       </Item>
-      <Button x="4rem" y="2rem">Shiny</Button>
+      {isTitle || (
+        <Button x="4rem" y="2rem" onClick={() => toggleIsShiny(!isShiny)}>
+          {isShiny ? "Normal" : "Shiny"}
+        </Button>
+      )}
     </Container>
   );
 };

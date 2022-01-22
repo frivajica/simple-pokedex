@@ -1,9 +1,5 @@
 import { Button } from "../common/Button"
 import styled from "styled-components";
-const P = styled.p`
-	text-align: center;
-	font-size: .8rem;
-`;
 const Div = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -15,13 +11,13 @@ const Container = styled.div`
 	column-gap: 3rem;
 `;
 
-export const CardBottom = ({ info=['hola', 'hey'], buttonText }) => {
+export const CardBottom = ({ type, clickProp, id, buttonText }) => {
   return (
 		<Container>
 			<Div>
-				{info?.map((e, i) => <P key={`hability-${i}`}>{e}</P>)}
+				{type}
 			</Div>
-			<Button x="5rem" y="1.5rem">{buttonText}</Button>
+			<Button onClick={clickProp} x="5rem" y="1.5rem">{buttonText}</Button>
 		</Container>
 	);
 };

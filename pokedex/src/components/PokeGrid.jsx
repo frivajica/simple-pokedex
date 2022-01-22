@@ -8,22 +8,16 @@ const Container = styled.div`
   grid-gap: 2rem;
 `;
 
-export const PokeGrid = () => {
+export const PokeGrid = ({ pokeInfo }) => {
+
   return (
     <Container>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {pokeInfo.map(e => {
+        return <Card
+          key={`${e.name}-${e.id}`} 
+          data={e}
+        />
+      })}
     </Container>
   );
 };

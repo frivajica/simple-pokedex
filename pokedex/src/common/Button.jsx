@@ -12,6 +12,9 @@ const Container = styled.button`
     background-color: #282e35;
     color: white;
   }
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const Button = ({ children, isInactive, onClick, x, y }) => {

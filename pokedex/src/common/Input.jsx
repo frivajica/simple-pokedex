@@ -7,11 +7,12 @@ const Container = styled.input`
 	border-radius: 5px;
 `;
 
-export const Input = ({ id, className,type, name, value, placeholder, onChange }) => {
+export const Input = ({ id, className,type, name, value, onSubmit, placeholder, onChange }) => {
 	return (
     <Container 
 			type={type}
 			onChange={onChange}
+			onSubmit={onSubmit}
 			id={id}
 			classname={className}
 			name={name}

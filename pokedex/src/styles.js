@@ -14,5 +14,10 @@ export const GlobalStyles = styled.div`
 
 	& p {
 		margin: 0;
+		text-decoration: none;
+	 p:hover, p:focus, p:active {
+     text-decoration: none;
+     color: inherit;
+ 	}
 	}
 `;

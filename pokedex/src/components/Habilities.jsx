@@ -1,8 +1,9 @@
 import styled from "styled-components";
 const P = styled.p`
 	font-size: .8rem;
+	padding: .3rem 0;
 	font-weight: ${({isTitle}) => isTitle && "bold"};
-	width: ${({width}) => width};
+	width: 100%;
 `;
 const Container = styled.div`
 	display: flex;
@@ -11,9 +12,10 @@ const Container = styled.div`
 	flex-wrap: wrap;
 `;
 
-export const Habilities = ({ properties, isTitle }) => {
+export const Habilities = ({ properties, key, isTitle }) => {
+  const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
 	const propertiesRender = 
-		properties?.map((h, i) => <P key={`hability-${i}`}>{h}</P>)
+		properties?.map((h, i) => <P key={`${key}-${i}`}>{capitalizer(h?.ability?.name)}</P>)
 			|| <P>Desconocidas</P>
 
   return (
