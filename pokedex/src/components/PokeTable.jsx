@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import { TableItem } from "../components/TableItem"
+import { TableItem } from "../components/TableItem";
+import { useSelector } from "react-redux"
 
-export const PokeTable = ({pokeInfo}) => {
+export const PokeTable = () => {
+	const { data } = useSelector(state => state);
+
   return (
     <Container>
 				<TableItem isTitle />
-			{pokeInfo.map((e, i) => 
+			{data.map((e, i) => 
 				{return <TableItem 
-					i={i} key={e.id} data={e}
+					id={e.id} i={i} key={e.id} data={e}
 				/>}
 			)}
     </Container>

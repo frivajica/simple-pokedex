@@ -3,19 +3,16 @@ import { Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Pokelist } from "./views/Pokelist";
 import { Login } from "./views/Login";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { catchEmAll } from "./state/allPokemon"
 
 export const App = () => {
   const isLoggedIn = useSelector(({ user }) => !!user.email);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) navigate(`/login`);
-    dispatch(catchEmAll());
-  }, [isLoggedIn, dispatch, navigate]);
+  }, [isLoggedIn, navigate]);
 
   return (
     <>

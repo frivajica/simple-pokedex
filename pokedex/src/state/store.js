@@ -1,19 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import userReducer from "./user";
-import listModeReducer from "./listMode";
-import allPokemonReducer from "./allPokemon";
-import somePokemonReducer from "./somePokemon";
 import { persistStore, persistReducer } from "redux-persist";
+import userReducer from "./user";
+import isTableReducer from "./isTable";
+import rawDataReducer from "./rawData";
+import dataReducer from "./data";
 import storage from "redux-persist/lib/storage";
 import logger from 'redux-logger';
 
 //Setup
 const rootReducer = combineReducers({
   user: userReducer,
-	listMode: listModeReducer,
-  allPokemon: allPokemonReducer,
-  somePokemon: somePokemonReducer,
+	isTable: isTableReducer,
+  rawData: rawDataReducer,
+  data: dataReducer,
 });
 
 const persistConfig = {
@@ -21,9 +21,8 @@ const persistConfig = {
   storage,
   whitelist: [ //Here is where reducers which we want to persist are listed
 		"user",
-		"listMode",
-    "allPokemon",
-    "somePokemon",
+		"isTable",
+    "processedData",
   ],
 };
 

@@ -1,9 +1,15 @@
-export const extractPokeInfo = async (array) => {
+export const extractPokeInfo = async (data) => {
 	const info = [];
-	await array.forEach(async (pokemon) => {
-		const a = await fetch(pokemon?.url).then(res => res.json());
-		const b = await fetch(a.species.url).then(res => res.json());
-		info.push({...a, ...b});
-	});
+	let fun = async (pokemon) => {
+		let a = await fetch(pokemon?.url).then(res => res.json());
+		let b = await fetch(a.species.url).then(res => res.json());
+		info.push({...a, ...b})
+	};
+	let i = 0;
+	let len = data.length;
+	while (i < len) {
+		await fun(data[i]);
+		i++;
+	};
 	return info
 };

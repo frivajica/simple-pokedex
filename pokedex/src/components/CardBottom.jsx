@@ -1,7 +1,7 @@
 import { Button } from "../common/Button"
 import styled from "styled-components";
 
-export const CardBottom = ({ type, clickProp, id, buttonText }) => {
+export const CardBottom = ({ type, clickProp, buttonText }) => {
   return (
 		<Container>
 			<Div>

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import { Card } from "../components/Card";
+import { useSelector } from "react-redux"
 
-export const PokeGrid = ({ pokeInfo }) => {
+export const PokeGrid = () => {
+	const { data } = useSelector(state => state);
 
   return (
     <Container>
-      {pokeInfo.map(e => {
-        return <Card
-          key={`${e.name}-${e.id}`} 
-          data={e}
-        />
+      {data.map(e => {
+        return <Card id={e.id} key={`${e.name}-${e.id}`} data={e} />
       })}
     </Container>
   );

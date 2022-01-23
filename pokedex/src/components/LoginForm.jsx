@@ -8,13 +8,13 @@ import { useForm } from "../hooks/useForm"
 export const LoginForm = () => {
 	const { form, handleChange } = useForm();
 	const dispatch = useDispatch();
-	const logIn = () => { dispatch(loginRequest(form)) };
+	const logIn = () => dispatch(loginRequest(form));
 
   return (
-    <Container>
+    <Container onSubmit={logIn}>
 			<Input type="email" name="email" onChange={handleChange} placeholder="Correo Electrónico" />
 			<Input type="password" name="password" onChange={handleChange} placeholder="Contraseña" />
-			<Button x="7rem" onClick={logIn}>Iniciar Sesión</Button>
+			<Button type={"submit"} x="7rem">Iniciar Sesión</Button>
     </Container>
   );
 };

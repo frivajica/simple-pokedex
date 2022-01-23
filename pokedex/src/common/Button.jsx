@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Button = ({ children, isInactive, onClick, x, y }) => {
+export const Button = ({ children, isInactive, onClick, type, x, y }) => {
   return (
-    <Container x={x} y={y} isInactive={isInactive} onClick={onClick}>
+    <Container x={x} y={y} type={type} isInactive={isInactive} onClick={onClick}>
       {children}
     </Container>
   );

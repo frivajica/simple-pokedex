@@ -3,7 +3,7 @@ import { CardBottom } from "./CardBottom";
 import styled from "styled-components";
 import { useState } from "react";
 
-export const Card = ({ data, key }) => {
+export const Card = ({ data, id }) => {
   const [isShiny, toggleIsShiny] = useState(false);
   const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
   const name = data?.names?.filter((e) => e?.language?.name === "es")[0]?.name;
@@ -17,9 +17,8 @@ export const Card = ({ data, key }) => {
     <Container>
       <Img src={imgString} alt="Imagen del Pokemon" />
       <h3>{fixedName}</h3>
-      <CardProperties properties={data?.abilities} id={key} />
+      <CardProperties properties={data?.abilities} id={id} />
       <CardBottom type={type} 
-      id={key} 
       clickProp={() => toggleIsShiny(!isShiny)} 
       buttonText={isShiny ? "Normal" : "Shiny"}
       />

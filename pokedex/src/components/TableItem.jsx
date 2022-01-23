@@ -3,7 +3,7 @@ import { Button } from "../common/Button";
 import { Habilities } from "../components/Habilities";
 import { useState } from "react";
 
-export const TableItem = ({ isTitle, i, key, data }) => {
+export const TableItem = ({ isTitle, i, id, data }) => {
   const [isShiny, toggleIsShiny] = useState(false);
   const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
   const name = data?.names?.filter((e) => e?.language?.name === "es")[0]?.name;
@@ -24,7 +24,7 @@ export const TableItem = ({ isTitle, i, key, data }) => {
           <Img src={imgString} alt="Imagen del Pokemon" />
         )}
         <P isTitle={isTitle}>{isTitle ? "Tipos" : type}</P>
-        <Habilities isTitle={isTitle} id={key} properties={data?.abilities} />
+        <Habilities isTitle={isTitle} id={id} properties={data?.abilities} />
       </Item>
       {isTitle || (
         <Button x="4rem" y="2rem" onClick={() => toggleIsShiny(!isShiny)}>

@@ -3,26 +3,16 @@ import { PokeTable } from "../components/PokeTable";
 import { PokelistHeader } from "../components/PokelistHeader";
 import { PokeGrid } from "../components/PokeGrid";
 import { useSelector } from "react-redux";
-import { extractPokeInfo } from "../utils/extractPokeInfo";
-import { useEffect, useState } from "react"
 
 export const Pokelist = () => {
-	const [ pokeInfo, setPokeInfo ] = useState([]);
-  const { listMode } = useSelector((state) => state);
-  const { somePokemon } = useSelector(state => state);
-	const Content = listMode === 'table' 
-		? <PokeTable pokeInfo={pokeInfo} /> 
-		: <PokeGrid pokeInfo={pokeInfo} />;
-  useEffect(() => {
-    (async () => {setPokeInfo(await extractPokeInfo(somePokemon))})();
-  }, [somePokemon]);
+	const { isTable } = useSelector(state => state);
 
-  return (
-    <Container >
+	return (
+		<Container >
 			<PokelistHeader />
-			{Content}
-    </Container>
-  );
+			{isTable ? <PokeTable /> : <PokeGrid />}
+		</Container>
+	);
 };
 
 const Container = styled.div`

@@ -1,41 +1,47 @@
 import styled from "styled-components";
+import { useEffect } from "react";
 import { Search } from "./Search";
-import { useEffect } from "react"
 import { Button } from "../common/Button";
-import { changeView } from "../state/listMode";
+import { changeView } from "../state/isTable";
 import { useSelector, useDispatch } from "react-redux";
-import { searchPokemon } from "../state/somePokemon"
+import { getSomePokemon } from "../state/rawData";
+import { processData } from "../state/data";
 
 export const PokelistHeader = () => {
-  const { listMode } = useSelector((state) => state);
+  const { isTable } = useSelector((state) => state);
+	const { rawData } = useSelector(state => state);
   const dispatch = useDispatch();
-  const isTable = listMode === "grid";
   const handleView = (view) => dispatch(changeView(view));
-  const handleChange = (event) => {
-    event.preventDefault();
-    dispatch(searchPokemon(event.target.value));
+  const handleSearch = (event) => {
+    const search = event.target.value.toLowerCase();
+    dispatch(getSomePokemon(search));
 	};
-  useEffect( () => {dispatch(searchPokemon(""))}, [dispatch]);
+	useEffect(() => {dispatch(getSomePokemon(false))}, [dispatch]);
+	useEffect(() => {dispatch(processData(rawData))}, [dispatch, rawData]);
 
   return (
     <Container>
       <Search
         name="search"
-        onChange={handleChange}
+        onChange={handleSearch}
         placeholder={`🔍︎   Buscar Pokémon`}
       />
       <div>
-        <Button x="7rem" isInactive={isTable} onClick={() => handleView("table")}>
+        <Button x="7rem" 
+          isInactive={!isTable} 
+          onClick={() => handleView(true)}>
           Lista
         </Button>
-        <Button x="7rem" isInactive={!isTable} onClick={() => handleView("grid")}>
+        <Button 
+          x="7rem" 
+          isInactive={isTable} 
+          onClick={() => handleView(false)}>
           Cuadrícula
         </Button>
       </div>
     </Container>
   );
 };
-
 
 const Container = styled.div`
   padding: 1rem 0;
