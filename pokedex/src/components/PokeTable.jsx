@@ -8,10 +8,7 @@ export const PokeTable = () => {
   return (
     <Container>
 				<TableItem isTitle />
-			{data.map((e, i) => 
-				{return <TableItem 
-					id={e.id} i={i} key={e.id} data={e}
-				/>}
+			{data.map((e, i) => <TableItem i={i} key={e.id} data={e} />
 			)}
     </Container>
   );

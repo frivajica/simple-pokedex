@@ -17,7 +17,7 @@ export const PokelistHeader = () => {
     dispatch(getSomePokemon(search));
 	};
 	useEffect(() => {dispatch(getSomePokemon(false))}, [dispatch]);
-	useEffect(() => {dispatch(processData(rawData))}, [dispatch, rawData]);
+	useEffect(() => {dispatch(processData())}, [dispatch, rawData]);
 
   return (
     <Container>
