@@ -8,16 +8,16 @@ import { getSomePokemon } from "../state/rawData";
 import { processData } from "../state/data";
 
 export const PokelistHeader = () => {
-  const { isTable } = useSelector((state) => state);
-	const { rawData } = useSelector(state => state);
   const dispatch = useDispatch();
+  const { isTable } = useSelector(state => state);
+	const { rawData } = useSelector(state => state);
+	useEffect(() => {dispatch(getSomePokemon(false))}, [dispatch]);
+	useEffect(() => {dispatch(processData())}, [dispatch, rawData]);
   const handleView = (view) => dispatch(changeView(view));
   const handleSearch = (event) => {
     const search = event.target.value.toLowerCase();
     dispatch(getSomePokemon(search));
 	};
-	useEffect(() => {dispatch(getSomePokemon(false))}, [dispatch]);
-	useEffect(() => {dispatch(processData())}, [dispatch, rawData]);
 
   return (
     <Container>
@@ -33,7 +33,7 @@ export const PokelistHeader = () => {
           Lista
         </Button>
         <Button 
-          x="7rem" 
+          x="7rem"
           isInactive={isTable} 
           onClick={() => handleView(false)}>
           Cuadrícula
