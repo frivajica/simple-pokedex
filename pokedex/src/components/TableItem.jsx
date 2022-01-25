@@ -1,36 +1,24 @@
 import styled from "styled-components";
 import { Button } from "../common/Button";
-import { Habilities } from "../components/Habilities";
+import { Properties } from "./Properties";
 import { useState } from "react";
 
-export const TableItem = ({ isTitle, i, data }) => {
+export const TableItem = ({ i, data }) => {
   const [isShiny, toggleIsShiny] = useState(false);
-  const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
-  const name = data?.names?.filter((e) => e?.language?.name === "es")[0]?.name;
-  const fixedName = capitalizer(name);
-  const type = capitalizer(data?.types[0]?.type?.name);
-  const imgString = !isShiny
-    ? data?.sprites?.front_default
-    : data?.sprites?.front_shiny;
+  const imgString = !isShiny ? data?.img[4] : data?.img[6];
 
   return (
     <Container>
-      <Item i={i} isTitle={isTitle}>
-        <P isTitle={isTitle}>{isTitle ? "#" : data.id}</P>
-        <P isTitle={isTitle}>{isTitle ? "Nombre" : fixedName}</P>
-        {isTitle ? (
-          <P isTitle={isTitle}>Vista Previa</P>
-        ) : (
-          <Img src={imgString} alt="Imagen del Pokemon" />
-        )}
-        <P isTitle={isTitle}>{isTitle ? "Tipos" : type}</P>
-        <Habilities isTitle={isTitle} id={data?.id} properties={data?.abilities} />
+      <Item i={i}>
+        <p>{data?.id}</p>
+        <p>{data?.name}</p>
+        <Img src={imgString} alt="Imagen del Pokemon" />
+        <Properties id={data?.id} properties={data?.types} />
+        <Properties id={data?.id} properties={data?.abilities} />
       </Item>
-      {isTitle || (
-        <Button x="4rem" y="2rem" onClick={() => toggleIsShiny(!isShiny)}>
-          {isShiny ? "Normal" : "Shiny"}
-        </Button>
-      )}
+      <Button x="4rem" y="2rem" onClick={() => toggleIsShiny(!isShiny)}>
+        {isShiny ? "Normal" : "Shiny"}
+      </Button>
     </Container>
   );
 };
@@ -43,8 +31,8 @@ const Container = styled.div`
 `;
 const Item = styled.div`
   border: #d2dbe4 2px solid;
-  background-color: ${({ isTitle, i }) => {
-    return isTitle ? "#EFF2F7" : i % 2 === 1 ? "#F9FAFC" : "white";
+  background-color: ${({ i }) => {
+    return i % 2 === 1 ? "#F9FAFC" : "white";
   }};
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -60,7 +48,4 @@ const Img = styled.img`
   :hover {
     cursor: pointer;
   }
-`;
-const P = styled.p`
-  font-weight: ${({ isTitle }) => isTitle && "bold"};
 `;

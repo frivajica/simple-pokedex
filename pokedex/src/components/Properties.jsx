@@ -1,18 +1,13 @@
 import styled from "styled-components";
 
-export const Habilities = ({ properties, key, isTitle }) => {
-  const capitalizer = (e) => e?.charAt(0)?.toUpperCase() + e?.slice(1);
-	const propertiesRender = 
-		properties?.map((h, i) => <P key={`${key}-${i}`}>{capitalizer(h?.ability?.name)}</P>)
-			|| <P>Desconocidas</P>
-
+export const Properties = ({ properties, id, isTitle, title }) => {
   return (
 	<Container>
 		{isTitle ? (
-				<P isTitle={isTitle} >Habilidades</P>
+				<P isTitle={isTitle}>{title}</P>
 			) : (
 				<>
-					{propertiesRender}
+					{properties?.map((e, i) => <P key={`${id}-${i}`}>{e}</P>)}
 				</>
 		)}
 	</Container>
